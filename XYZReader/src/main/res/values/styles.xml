@@ -24,5 +24,14 @@
     <style name="Theme.Bacon.Detail">
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
+    <style name="CollapsingToolbarExpandedStyle">
+        <item name="android:textColor">@android:color/transparent</item>
+        <item name="android:textSize">0sp</item>
+    </style>
+    <style name="CollapsingToolbarCollapsedStyle">
+        <item name="android:textStyle">bold</item>
+
+        <item name="android:textColor">@color/white</item>
+    </style>
 
 </resources>

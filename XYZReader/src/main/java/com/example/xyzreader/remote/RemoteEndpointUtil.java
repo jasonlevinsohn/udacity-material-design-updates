@@ -4,6 +4,7 @@ import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 import org.json.JSONTokener;
 
 import java.io.IOException;
@@ -30,6 +31,8 @@ public class RemoteEndpointUtil {
 
         // Parse JSON
         try {
+//            JSONArray rssItemArray = new JSONArray(itemsJson);
+//            return rssItemArray;
             JSONTokener tokener = new JSONTokener(itemsJson);
             Object val = tokener.nextValue();
             if (!(val instanceof JSONArray)) {
@@ -50,7 +53,15 @@ public class RemoteEndpointUtil {
                 .url(url)
                 .build();
 
-        Response response = client.newCall(request).execute();
-        return response.body().string();
+        try {
+            Response response = client.newCall(request).execute();
+//            Log.d(TAG, "RESPONSE: ");
+//            Log.d(TAG, response.body().string());
+            return response.body().string();
+
+        } catch (Exception e) {
+            Log.d(TAG, "OKHTTP Exception: " + e.getMessage());
+            return "";
+        }
     }
 }
