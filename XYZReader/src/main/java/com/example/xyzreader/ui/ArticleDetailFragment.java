@@ -120,28 +120,28 @@ public class ArticleDetailFragment extends Fragment implements
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.fragment_article_detail, container, false);
-//        mDrawInsetsFrameLayout = (DrawInsetsFrameLayout)
-//                mRootView.findViewById(R.id.draw_insets_frame_layout);
-//        mDrawInsetsFrameLayout.setOnInsetsCallback(new DrawInsetsFrameLayout.OnInsetsCallback() {
-//            @Override
-//            public void onInsetsChanged(Rect insets) {
-//                mTopInset = insets.top;
-//            }
-//        });
+        mDrawInsetsFrameLayout = (DrawInsetsFrameLayout)
+                mRootView.findViewById(R.id.draw_insets_frame_layout);
+        mDrawInsetsFrameLayout.setOnInsetsCallback(new DrawInsetsFrameLayout.OnInsetsCallback() {
+            @Override
+            public void onInsetsChanged(Rect insets) {
+                mTopInset = insets.top;
+            }
+        });
 
-//        mScrollView = (ObservableScrollView) mRootView.findViewById(R.id.scrollview);
-//        mScrollView.setCallbacks(new ObservableScrollView.Callbacks() {
-//            @Override
-//            public void onScrollChanged() {
-//                mScrollY = mScrollView.getScrollY();
-//                getActivityCast().onUpButtonFloorChanged(mItemId, ArticleDetailFragment.this);
-//                mPhotoContainerView.setTranslationY((int) (mScrollY - mScrollY / PARALLAX_FACTOR));
-//                updateStatusBar();
-//            }
-//        });
+        mScrollView = (ObservableScrollView) mRootView.findViewById(R.id.scrollview);
+        mScrollView.setCallbacks(new ObservableScrollView.Callbacks() {
+            @Override
+            public void onScrollChanged() {
+                mScrollY = mScrollView.getScrollY();
+                getActivityCast().onUpButtonFloorChanged(mItemId, ArticleDetailFragment.this);
+                mPhotoContainerView.setTranslationY((int) (mScrollY - mScrollY / PARALLAX_FACTOR));
+                updateStatusBar();
+            }
+        });
 
         mPhotoView = (ImageView) mRootView.findViewById(R.id.photo);
-//        mPhotoContainerView = mRootView.findViewById(R.id.photo_container);
+        mPhotoContainerView = mRootView.findViewById(R.id.photo_container);
 
         mStatusBarColorDrawable = new ColorDrawable(0);
 
@@ -156,17 +156,8 @@ public class ArticleDetailFragment extends Fragment implements
         });
 
         bindViews();
-//        updateStatusBar();
+        updateStatusBar();
 
-        Toolbar toolbar = (Toolbar) mRootView.findViewById(R.id.article_detail_toolbar);
-
-        getActivityCast().setSupportActionBar(toolbar);
-        getActivityCast().getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getActivityCast().getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-//        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
-//        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
         return mRootView;
     }
 
@@ -228,8 +219,6 @@ public class ArticleDetailFragment extends Fragment implements
             mRootView.setVisibility(View.VISIBLE);
             mRootView.animate().alpha(1);
             titleView.setText(mCursor.getString(ArticleLoader.Query.TITLE));
-            ((CollapsingToolbarLayout) mRootView.findViewById(R.id.article_detail_collaping_toolbar))
-                    .setTitle(mCursor.getString(ArticleLoader.Query.TITLE));
             Date publishedDate = parsePublishedDate();
             if (!publishedDate.before(START_OF_EPOCH.getTime())) {
                 bylineView.setText(Html.fromHtml(
@@ -261,7 +250,7 @@ public class ArticleDetailFragment extends Fragment implements
                                 mPhotoView.setImageBitmap(imageContainer.getBitmap());
                                 mRootView.findViewById(R.id.meta_bar)
                                         .setBackgroundColor(mMutedColor);
-//                                updateStatusBar();
+                                updateStatusBar();
                             }
                         }
 
@@ -308,14 +297,14 @@ public class ArticleDetailFragment extends Fragment implements
         bindViews();
     }
 
-//    public int getUpButtonFloor() {
-//        if (mPhotoContainerView == null || mPhotoView.getHeight() == 0) {
-//            return Integer.MAX_VALUE;
-//        }
-//
-//        // account for parallax
-//        return mIsCard
-//                ? (int) mPhotoContainerView.getTranslationY() + mPhotoView.getHeight() - mScrollY
-//                : mPhotoView.getHeight() - mScrollY;
-//    }
+    public int getUpButtonFloor() {
+        if (mPhotoContainerView == null || mPhotoView.getHeight() == 0) {
+            return Integer.MAX_VALUE;
+        }
+
+        // account for parallax
+        return mIsCard
+                ? (int) mPhotoContainerView.getTranslationY() + mPhotoView.getHeight() - mScrollY
+                : mPhotoView.getHeight() - mScrollY;
+    }
 }
