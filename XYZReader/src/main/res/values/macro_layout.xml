@@ -3,6 +3,7 @@
     <dimen name="list_side_margin">8dp</dimen>
     <dimen name="list_top_margin">8dp</dimen>
     <dimen name="list_toolbar_side_margin">0dp</dimen>
+    <dimen name="list_card_elevation">1dp</dimen>
     <integer name="list_column_count">2</integer>
 
     <!-- detail -->
