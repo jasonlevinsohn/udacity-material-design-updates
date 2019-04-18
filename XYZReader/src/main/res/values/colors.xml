@@ -18,9 +18,20 @@
 <resources>
     <color name="photo_placeholder">#ccc</color>
 
-    <color name="theme_primary">#04561A</color>
-    <color name="theme_primary_dark">#04561A</color>
-    <color name="theme_accent">#04561A</color>
+    <!--<color name="theme_primary">#04561A</color>-->
+    <!--<color name="theme_primary_dark">#04561A</color>-->
+    <!--<color name="theme_accent">#04561A</color>-->
+    <!--<color name="ltgray">#ffe0e0e0</color>-->
+    <!--<color name="white">#fff</color>-->
+    <!--<color name="article_text_color">#333</color>-->
+
+    <color name="theme_primary">#B6D18E</color>
+    <color name="theme_primary_dark">#649918</color>
+    <color name="theme_secondary">#FFF58D</color>
+    <color name="theme_tertiary">#CCCCFF</color>
+
+    <color name="theme_accent">#FF618B</color>
     <color name="ltgray">#ffe0e0e0</color>
     <color name="white">#fff</color>
+    <color name="article_text_color">#333</color>
 </resources>
